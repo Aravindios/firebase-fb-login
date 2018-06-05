@@ -1,0 +1,192 @@
+PODS:
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - CHIPageControl/Fresno (0.1.5)
+  - FBSDKCoreKit (4.30.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.30.0):
+    - FBSDKCoreKit
+  - Firebase/Analytics (4.8.2):
+    - Firebase/Core
+  - Firebase/Auth (4.8.2):
+    - Firebase/Core
+    - FirebaseAuth (= 4.4.2)
+  - Firebase/Core (4.8.2):
+    - FirebaseAnalytics (= 4.0.9)
+    - FirebaseCore (= 4.0.14)
+  - Firebase/Database (4.8.2):
+    - Firebase/Core
+    - FirebaseDatabase (= 4.1.4)
+  - Firebase/Messaging (4.8.2):
+    - Firebase/Core
+    - FirebaseMessaging (= 2.0.8)
+  - Firebase/Performance (4.8.2):
+    - Firebase/Core
+    - FirebasePerformance (= 1.1.1)
+  - Firebase/Storage (4.8.2):
+    - Firebase/Core
+    - FirebaseStorage (= 2.1.2)
+  - FirebaseAnalytics (4.0.9):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseAuth (4.4.2):
+    - FirebaseAnalytics (~> 4.0)
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseCore (4.0.14):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseDatabase (4.1.4):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - leveldb-library (~> 1.18)
+  - FirebaseInstanceID (2.0.8):
+    - FirebaseCore (~> 4.0)
+  - FirebaseMessaging (2.0.8):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
+  - FirebasePerformance (1.1.1):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - FirebaseSwizzlingUtilities (~> 1.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+    - Protobuf (~> 3.1)
+  - FirebaseStorage (2.1.2):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseSwizzlingUtilities (1.0.0)
+  - GeoFire (2.0.1):
+    - Firebase/Database (~> 4.0)
+  - GoogleToolboxForMac/DebugUtils (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/Defines (2.1.3)
+  - GoogleToolboxForMac/Logger (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3)":
+    - GoogleToolboxForMac/DebugUtils (= 2.1.3)
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.1.3)"
+  - GTMSessionFetcher/Core (1.1.13)
+  - JGProgressHUD (2.0)
+  - Koloda (4.3.1):
+    - pop (~> 1.0)
+  - leveldb-library (1.20)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - NVActivityIndicatorView (4.1.1):
+    - NVActivityIndicatorView/Presenter (= 4.1.1)
+  - NVActivityIndicatorView/Presenter (4.1.1)
+  - pop (1.0.10)
+  - Protobuf (3.5.0)
+  - SDWebImage (4.3.0):
+    - SDWebImage/Core (= 4.3.0)
+  - SDWebImage/Core (4.3.0)
+  - SLPagingViewSwift-Swift3 (1.0.0)
+  - SwiftyJSON (4.0.0)
+
+DEPENDENCIES:
+  - CHIPageControl/Fresno
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - Firebase/Analytics
+  - Firebase/Auth
+  - Firebase/Core
+  - Firebase/Database
+  - Firebase/Messaging
+  - Firebase/Performance
+  - Firebase/Storage
+  - GeoFire (>= 1.1)
+  - JGProgressHUD
+  - Koloda (~> 4.3.1)
+  - NVActivityIndicatorView
+  - SDWebImage (~> 4.0)
+  - SLPagingViewSwift-Swift3 (from `https://github.com/davidseek/SLPagingViewSwift-Swift-3-Tinder-Twitter.git`)
+  - SwiftyJSON (~> 4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Bolts
+    - CHIPageControl
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAuth
+    - FirebaseCore
+    - FirebaseDatabase
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - FirebasePerformance
+    - FirebaseStorage
+    - FirebaseSwizzlingUtilities
+    - GeoFire
+    - GoogleToolboxForMac
+    - GTMSessionFetcher
+    - JGProgressHUD
+    - Koloda
+    - leveldb-library
+    - nanopb
+    - NVActivityIndicatorView
+    - pop
+    - Protobuf
+    - SDWebImage
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  SLPagingViewSwift-Swift3:
+    :git: https://github.com/davidseek/SLPagingViewSwift-Swift-3-Tinder-Twitter.git
+
+CHECKOUT OPTIONS:
+  SLPagingViewSwift-Swift3:
+    :commit: 6314e85721f0bb17217aab16cad3fca2026065a8
+    :git: https://github.com/davidseek/SLPagingViewSwift-Swift-3-Tinder-Twitter.git
+
+SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  CHIPageControl: 79d19a8ee2e35fa3c1da6533adb5364c77b5cfea
+  FBSDKCoreKit: 7c4bba2877781a131ab5d54c0a78c405d4307b62
+  FBSDKLoginKit: fe7a7e82373dc5daad92e1623219e86224ab1fb1
+  Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
+  FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
+  FirebaseAuth: bd2738c5c1e92b108ba5f7f7335908097a4e50bb
+  FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
+  FirebaseDatabase: de4446507ccd3257fca37d16f40e1540324571fd
+  FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
+  FirebaseMessaging: dfdcd307c2382290a1e297a81d0f18370f5b1bcd
+  FirebasePerformance: 4e1f8091e400eaf88505234caef5718313653709
+  FirebaseStorage: 181bb543d39ee3c53e0558de7ba86b1286a0427f
+  FirebaseSwizzlingUtilities: f1c49a5a372ac852c853722a5891a0a5e2344a6c
+  GeoFire: 3e70a24019dc16816190f533c9cac0d1321c4a71
+  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
+  JGProgressHUD: c402c0f41fc291ca7e33bba2f999118d9682dd9c
+  Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  SDWebImage: 6da6c8bca115addc4de8613362e1b15f66333825
+  SLPagingViewSwift-Swift3: 52ccbe21930f5700f5eacccafff0a712f57d8d67
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+
+PODFILE CHECKSUM: a3e80222958dc1753bf027d9149beac196216338
+
+COCOAPODS: 1.5.3
