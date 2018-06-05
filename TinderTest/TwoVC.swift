@@ -22,10 +22,11 @@ import SwiftyJSON
 
 //private var numberOfCards: Int = 5
 
+
+
 class TwoVC: UIViewController, CLLocationManagerDelegate, NVActivityIndicatorViewable {
 
-    @IBOutlet var likeBtn: UIButton!
-    var locManagerTwoVC:CLLocationManager!
+   var locManagerTwoVC:CLLocationManager!
     var LattitudeTwoVC : Double!
     var LongitudeTwoVC : Double!
         //String? = ""
@@ -44,17 +45,15 @@ class TwoVC: UIViewController, CLLocationManagerDelegate, NVActivityIndicatorVie
     var fetchkeyArray = [String]()
     var last_time = true
     var uidsnap : String? = ""
-    var userLikeArray = [UIImage]()
-    var userLikeArrayIndex : Int!
+    var userLikeArray = [NSString]()
     var userNopeArray = [NSString]()
-    var userLikeCopy = [UIImage]()
-    var userLikeCopyIndex : Int!
-    
+
     
     var geoFireRef: DatabaseReference?
     var geoFire: GeoFire?
     var myQuery: GFQuery?
  
+    
     @IBOutlet weak var activatorView: NVActivityIndicatorView!
     
     @IBOutlet weak var kolodaView: KolodaView!
@@ -72,14 +71,16 @@ class TwoVC: UIViewController, CLLocationManagerDelegate, NVActivityIndicatorVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.activatorView.isHidden = true
+ 
+          self.activatorView.isHidden = true
         currentUser = Auth.auth().currentUser?.uid
        // geoFire?.removeKey("users")
         fetchingLocationTwoVC()
         //fetchUsers()
         //nearbyUsers()
+        
 }
+    
     func fetchingLocationTwoVC(){
         locManagerTwoVC = CLLocationManager()
         locManagerTwoVC.desiredAccuracy = kCLLocationAccuracyBest
@@ -131,6 +132,49 @@ class TwoVC: UIViewController, CLLocationManagerDelegate, NVActivityIndicatorVie
         Database.database().reference().child("users").child(uid).updateChildValues(["longitude": longitudetwovc])
          print("Successfully saved user info into Firebase database")
     }
+    
+//    func fetchUsers() {
+//
+//        let ref = Database.database().reference()
+//        let usersRef = ref.child("users")
+//        usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
+//            self.currentUser = Auth.auth().currentUser?.uid
+//            for snap in snapshot.children {
+//                let userSnap = snap as! DataSnapshot
+//                let uid = userSnap.key //the uid of each user
+//                if self.currentUser != uid {
+//                    let userDict = userSnap.value as! [String:AnyObject] //child data
+//                    let name = userDict["name"] as! String
+//                    let imgurl = userDict["profileImageUrl"] as! String
+//                    let email = userDict["email"] as! String
+//                    let lat = userDict["latitude"] as? Double
+//                    let long = userDict["longitude"] as? Double
+//                    let url = URL(string:imgurl)
+//                    print(url)
+//                    if let data = try? Data(contentsOf: url!)
+//                    {
+//                        let image: UIImage = UIImage(data: data)!
+//                        self.dataImage = image
+//                    }
+//
+//                    self.dataSource.insert(self.dataImage!, at: 0)
+//                    self.numberofcards = self.dataSource.count
+//                    //let location = userDict["Location"] as! String
+//                    //print("key = \(uid) is at location = \(location)")
+//
+//
+//
+//                }
+//                else {
+//                    debugPrint("Current user filtered")
+//                }
+//            }
+//            self.kolodaView.dataSource = self
+//            self.kolodaView.delegate = self
+//            self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+//        })
+//    }
+    
     
         func nearbyUsers() {
             let geofireRef = Database.database().reference().child("users_locations")
@@ -197,86 +241,6 @@ class TwoVC: UIViewController, CLLocationManagerDelegate, NVActivityIndicatorVie
             })
         }
     
-    // MARK: IBActions
-    @IBAction func leftButtonTapped() {
-        
-        kolodaView?.swipe(.left)
-        
-        let ref = Database.database().reference().child("userwishlists").child("nope").child(currentUser!)
-    }
-    @IBAction func rightButtonTapped() {
-        kolodaView?.swipe(.right)
-        if self.userLikeArray.count != 0 {
-            self.userLikeCopy.append(userLikeArray[self.userLikeArrayIndex])
-        }
-        else {
-            print("Index is Zero")
-        }
-        let ref = Database.database().reference().child("userwishlists").child("like").child(currentUser!)
-        
-        
-    }
-    @IBAction func undoButtonTapped() {
-        kolodaView?.revertAction()
-    }
-}
-
-// MARK: KolodaViewDelegate
-
-extension TwoVC: KolodaViewDelegate {
-    func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
-        let position = kolodaView.currentCardIndex
-        if position == numberofcards {
-            self.activatorView.isHidden = false
-            self.activatorView.startAnimating()
-        }
-        else {
-            self.activatorView.isHidden = true
-            self.activatorView.stopAnimating()
-        }
-    }
-    func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        //UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
-//        let storyboard : UIStoryboard = UIStoryboard (name :"Main", bundle: nil)
-//         let newController = storyboard.instantiateViewController(withIdentifier: "ThreeVC") as! ThreeVC
-//         //self.present(newController, animated: true, completion: nil)
-//         self.navigationController?.pushViewController(newController, animated: true)
-    }
-}
-
-// MARK: KolodaViewDataSource
-
-extension TwoVC: KolodaViewDataSource {
-    
-    func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
-        return dataSource.count
-    }
-    
-    func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
-        return .default
-    }
-    
-    func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-         self.activatorView.isHidden = true
-       
-            print("INDEX:\(index)")
-            nopeFunction(index: index)
-      
-        return UIImageView(image: dataSource[Int(index)])
-    }
-    func nopeFunction(index: Int) {
-        print("FUNCTION INDEX:\(index)")
-        
-        self.userLikeArrayIndex = index
-        print("UIIMAGE: \(dataSource[index])")
-        self.userLikeArray.append(dataSource[index])
-    }
-    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
-        return Bundle.main.loadNibNamed("OverlayView", owner: self, options: nil)?[0] as? OverlayView
-    }
-}
-
-
 //    func nearbyUsers() {
 //        let geofireRef = Database.database().reference().child("users_locations")
 //        let geoFire = GeoFire(firebaseRef: geofireRef)
@@ -293,49 +257,209 @@ extension TwoVC: KolodaViewDataSource {
 //            // Create an immutable copy of the keys in the query
 //            var valueData = allKeys
 //            print("All keys within a query: \(valueData)")
-//
+//            
 //        })
 //    }
-
-
-//    func fetchUsers() {
+    
+//    func nearbyUsers() {
+//        let geofireRef = Database.database().reference().child("users_locations")
+//        let geoFire = GeoFire(firebaseRef: geofireRef)
+//        geoFire.setLocation(CLLocation(latitude: self.LattitudeTwoVC!, longitude: self.LongitudeTwoVC!), forKey: currentUser!)
+//        let center = CLLocation(latitude: self.LattitudeTwoVC!, longitude: self.LongitudeTwoVC!)
+//        let circleQuery = geoFire.query(at: center, withRadius: 5)
+//        //var allKeys = [AnyHashable: Any]()
+//        var allKeys = [String : Any]()
+//        var queryHandle = circleQuery.observe(.keyEntered, with: { (key: String!, location: CLLocation!) in
+//            print("Key '\(key!)' entered the search area and is at location '\(location!)'")
+//            let fetchKey : String = key as String
+//            self.keyArray.insert(fetchKey, at: 0)
+//            allKeys[key] = location
 //
-//        let ref = Database.database().reference()
-//        let usersRef = ref.child("users")
-//        usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
-//            self.currentUser = Auth.auth().currentUser?.uid
-//            for snap in snapshot.children {
-//                let userSnap = snap as! DataSnapshot
-//                let uid = userSnap.key //the uid of each user
-//                if self.currentUser != uid {
-//                    let userDict = userSnap.value as! [String:AnyObject] //child data
-//                    let name = userDict["name"] as! String
-//                    let imgurl = userDict["profileImageUrl"] as! String
-//                    let email = userDict["email"] as! String
-//                    let lat = userDict["latitude"] as? Double
-//                    let long = userDict["longitude"] as? Double
-//                    let url = URL(string:imgurl)
-//                    print(url)
-//                    if let data = try? Data(contentsOf: url!)
-//                    {
-//                        let image: UIImage = UIImage(data: data)!
-//                        self.dataImage = image
-//                    }
+//        })
+//        circleQuery.observeReady({
 //
-//                    self.dataSource.insert(self.dataImage!, at: 0)
-//                    self.numberofcards = self.dataSource.count
-//                    //let location = userDict["Location"] as! String
-//                    //print("key = \(uid) is at location = \(location)")
-//
-//
-//
-//                }
-//                else {
-//                    debugPrint("Current user filtered")
+//            for fetchIndex in 0..<self.keyArray.count{
+//                if self.currentUser != self.keyArray[fetchIndex] {
+//                    let fetchkeyArr : String = self.keyArray[fetchIndex]
+//                    self.fetchkeyArray.insert(fetchkeyArr, at: 0)
 //                }
 //            }
-//            self.kolodaView.dataSource = self
-//            self.kolodaView.delegate = self
-//            self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+//
+//            // Create an immutable copy of the keys in the query
+//            let json = JSON(allKeys)
+//            var valueData = allKeys
+//
+//          //  var fetchValueData = valueData["value"]
+//          // var keyUid = "\(fetchValueData)" as String
+//            print("All keys within a query: \(valueData)")
+//            let ref = Database.database().reference()
+//            let usersRef = ref.child("users")
+//            usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
+//                self.currentUser = Auth.auth().currentUser?.uid
+//                for snap in snapshot.children {
+//                    let userSnap = snap as! DataSnapshot
+//                    self.uidsnap = userSnap.key
+//                    if self.uidsnap != self.currentUser {
+//                        for indexsnap in 0..<self.fetchkeyArray.count {
+//                            if self.uidsnap != self.fetchkeyArray[indexsnap] {
+//                                    let userDict = userSnap.value as! [String:AnyObject] //child data
+//                                    let name = userDict["name"] as! String
+//                                    let imgurl = userDict["profileImageUrl"] as! String
+//                                    let email = userDict["email"] as! String
+//                                    let lat = userDict["latitude"] as? Double
+//                                    let long = userDict["longitude"] as? Double
+//                                    let url = URL(string:imgurl)
+//                                    print(url)
+//                                    if let data = try? Data(contentsOf: url!)
+//                                    {
+//                                        let image: UIImage = UIImage(data: data)!
+//                                        self.dataImage = image
+//                                    }
+//
+//                                    self.dataSource.insert(self.dataImage!, at: 0)
+//                                    self.numberofcards = self.dataSource.count
+//
+//                                    }
+//                            else {
+//                                debugPrint("Same User Filtered")
+//                            }
+//
+//                        }
+//                        return
+//
+//                    }
+//                    else {
+//                        debugPrint("Current user filtered")
+//                    }
+//                }
+//
+//                self.kolodaView.dataSource = self
+//                self.kolodaView.delegate = self
+//                self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+//             })
 //        })
 //    }
+    
+//                    //the uid of each user
+//                    for index in 0..<self.keyArray.count {
+//                        if self.currentUser != self.keyArray[index] {
+//                            let userDict = userSnap.value as! [String:AnyObject] //child data
+//                            let name = userDict["name"] as! String
+//                            let imgurl = userDict["profileImageUrl"] as! String
+//                            let email = userDict["email"] as! String
+//                            let lat = userDict["latitude"] as? Double
+//                            let long = userDict["longitude"] as? Double
+//                            let url = URL(string:imgurl)
+//                            print(url)
+//                            if let data = try? Data(contentsOf: url!)
+//                            {
+//                                let image: UIImage = UIImage(data: data)!
+//                                self.dataImage = image
+//                            }
+//
+//                            self.dataSource.insert(self.dataImage!, at: 0)
+//                            self.numberofcards = self.dataSource.count
+//                            //let location = userDict["Location"] as! String
+//                            //print("key = \(uid) is at location = \(location)")
+//                        }
+//                        else {
+//                            debugPrint("Current user filtered")
+//                        }
+//                    }
+//                }
+//                self.kolodaView.dataSource = self
+//                self.kolodaView.delegate = self
+//                self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+//            })
+//
+//
+//        })
+//}
+    
+    // MARK: IBActions
+    
+    @IBAction func superLikeAction(_ sender: UIButton) {
+       // self.performSegue(withIdentifier: "ChatLogController", sender: nil)
+        
+    }
+    @IBAction func leftButtonTapped() {
+        kolodaView?.swipe(.left)
+        nopeFunction()
+    }
+    
+    @IBAction func rightButtonTapped() {
+        kolodaView?.swipe(.right)
+        
+        
+    }
+    
+    @IBAction func undoButtonTapped() {
+        kolodaView?.revertAction()
+    }
+}
+
+// MARK: KolodaViewDelegate
+
+extension TwoVC: KolodaViewDelegate {
+    
+//    func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
+//        let position = kolodaView.currentCardIndex
+//        for i in 1...4 {
+//            dataSource.append(UIImage(named: "Card_like_\(i)")!)
+//        }
+//        kolodaView.insertCardAtIndexRange(position..<position + 4, animated: true)
+//    }
+    func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
+        let position = kolodaView.currentCardIndex
+//        for i in 1...numberofcards {
+//           //dataSource.append(UIImage(named: "Card_like_\(i)")!)   Old
+//            dataSource.append(UIImage(named: "\(dataSource[i])")!)
+//        }
+       // kolodaView.insertCardAtIndexRange(position..<position + dataSource.count, animated: true)
+        if position == numberofcards {
+            self.activatorView.isHidden = false
+            self.activatorView.startAnimating()
+        }
+        else {
+            self.activatorView.isHidden = true
+            self.activatorView.stopAnimating()
+            
+        }
+
+    }
+    
+    func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
+        
+        //UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
+        
+//        let storyboard : UIStoryboard = UIStoryboard (name :"Main", bundle: nil)
+//         let newController = storyboard.instantiateViewController(withIdentifier: "ThreeVC") as! ThreeVC
+//         //self.present(newController, animated: true, completion: nil)
+//         self.navigationController?.pushViewController(newController, animated: true)
+        
+    }
+    
+}
+
+// MARK: KolodaViewDataSource
+
+extension TwoVC: KolodaViewDataSource {
+    
+    func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
+        return dataSource.count
+    }
+    
+    func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
+        return .default
+    }
+    
+    func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
+         self.activatorView.isHidden = true
+        return UIImageView(image: dataSource[Int(index)])
+    }
+    
+    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
+        return Bundle.main.loadNibNamed("OverlayView", owner: self, options: nil)?[0] as? OverlayView
+    }
+}
+

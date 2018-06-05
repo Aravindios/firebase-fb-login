@@ -101,7 +101,6 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate  {
         let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { (action) in
             do {
                 try Auth.auth().signOut()
-               // CredentialState.sharedInstance.signedIn = false
                 let storyboard : UIStoryboard = UIStoryboard (name :"Main", bundle: nil)
                 let newController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                 self.present(newController, animated: true, completion: nil)

@@ -13,7 +13,7 @@
 		184BEE5D20AD9683004DE6EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BEE5C20AD9683004DE6EC /* LoginViewController.swift */; };
 		184BEE5F20AD9F88004DE6EC /* ProfileViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BEE5E20AD9F88004DE6EC /* ProfileViewViewController.swift */; };
 		184BEE6120ADAAAC004DE6EC /* EditInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BEE6020ADAAAC004DE6EC /* EditInfoViewController.swift */; };
-		18A13CE520C2D941007B297E /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A13CE420C2D941007B297E /* ChatLogController.swift */; };
+		18A13CE320C2AC3B007B297E /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A13CE220C2AC3B007B297E /* ChatLogController.swift */; };
 		18CD1E8D20B4444E001522B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD1E8C20B4444E001522B4 /* SettingsViewController.swift */; };
 		18D0CD6520B9204100B08679 /* SwipeResultDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0CD6420B9204100B08679 /* SwipeResultDirection.swift */; };
 		18DF454620B514A000B05B87 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18DF454220B5149F00B05B87 /* Info.plist */; };
@@ -55,7 +55,7 @@
 		184BEE5C20AD9683004DE6EC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		184BEE5E20AD9F88004DE6EC /* ProfileViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewViewController.swift; sourceTree = "<group>"; };
 		184BEE6020ADAAAC004DE6EC /* EditInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoViewController.swift; sourceTree = "<group>"; };
-		18A13CE420C2D941007B297E /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
+		18A13CE220C2AC3B007B297E /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		18CD1E8C20B4444E001522B4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		18D0CD6420B9204100B08679 /* SwipeResultDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeResultDirection.swift; sourceTree = "<group>"; };
 		18DF454220B5149F00B05B87 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 				6C556FF11DC16EEC0070F15F /* TwoVC.swift */,
 				6C556FF31DC16EF40070F15F /* ThreeVC.swift */,
 				184BEE5C20AD9683004DE6EC /* LoginViewController.swift */,
-				18A13CE420C2D941007B297E /* ChatLogController.swift */,
+				18A13CE220C2AC3B007B297E /* ChatLogController.swift */,
 				18094EF220B567AF007F6A66 /* Service.swift */,
 				18DF456420B54ACA00B05B87 /* CurrentUser.swift */,
 				184BEE5E20AD9F88004DE6EC /* ProfileViewViewController.swift */,
@@ -409,7 +409,7 @@
 				18DF456220B52FF600B05B87 /* KolodaViewAnimatior.swift in Sources */,
 				184BEE6120ADAAAC004DE6EC /* EditInfoViewController.swift in Sources */,
 				184B727320B811BE004162CB /* MenWomenTableViewController.swift in Sources */,
-				18A13CE520C2D941007B297E /* ChatLogController.swift in Sources */,
+				18A13CE320C2AC3B007B297E /* ChatLogController.swift in Sources */,
 				18D0CD6520B9204100B08679 /* SwipeResultDirection.swift in Sources */,
 				18CD1E8D20B4444E001522B4 /* SettingsViewController.swift in Sources */,
 				6C556FF21DC16EEC0070F15F /* TwoVC.swift in Sources */,

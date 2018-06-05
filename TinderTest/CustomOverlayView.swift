@@ -18,8 +18,6 @@ class CustomOverlayView: OverlayView {
         [unowned self] in
         
         var imageView = UIImageView(frame: self.bounds)
-        imageView.layer.borderColor = UIColor.red.cgColor
-        imageView.layer.borderWidth = 5
         self.addSubview(imageView)
         
         return imageView

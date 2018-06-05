@@ -9,10 +9,9 @@
 import UIKit
 import FirebaseDatabase
 
-private let reuseIdentifier = "Cell"
+//private let reuseIdentifier = "Cell"
 
 class ChatLogController: UICollectionViewController, UITextFieldDelegate {
-    
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter message..."
@@ -87,5 +86,4 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate {
         return true
     }
 }
-
 

@@ -18,12 +18,10 @@ class ExampleOverlayView: OverlayView {
         [unowned self] in
         
         var imageView = UIImageView(frame: self.bounds)
-
         self.addSubview(imageView)
         
         return imageView
         }()
-  
 
     override var overlayState: SwipeResultDirection? {
         didSet {
