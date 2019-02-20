@@ -24,9 +24,9 @@ pod 'Firebase/Performance'
 pod 'NVActivityIndicatorView'
 pod 'CHIPageControl/Fresno'
 pod 'GeoFire', '>= 1.1'
+http://refulgenceinc.com/demo/kumudam/api/index.php?cmd=USER_LOGIN&email=yamuna@refulgenceinc.com&password=yamuna
 
-
-
+http://singaporegoldmart.com/api/index.php?cmd=PRODUCT_BY_CATEGORY&category_id=2
 post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
